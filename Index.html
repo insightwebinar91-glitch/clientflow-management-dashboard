@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101c35">
+    <meta name="description" content="ClientFlow - Client and quotation management dashboard">
+    <title>ClientFlow | Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon">C</div>
+            <div>
+                <h2>ClientFlow</h2>
+                <small>Management Suite</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="side-nav">
+            <button class="nav-item active" data-page="dashboard">
+                <span>▦</span> Dashboard
+            </button>
+            <button class="nav-item" data-page="clients">
+                <span>♙</span> Clients
+            </button>
+            <button class="nav-item" data-page="quotations">
+                <span>▤</span> Quotations
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-profile">
+                <div class="avatar">JW</div>
+                <div>
+                    <strong>John Wainaina</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-button" id="menuButton"
+                    aria-label="Toggle menu">☰</button>
+                <div>
+                    <p class="topbar-label">WORKSPACE / <span id="breadcrumb">DASHBOARD</span></p>
+                    <h1 id="pageTitle">Dashboard Overview</h1>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <span class="date-display" id="todayDate"></span>
+                <div class="top-avatar">JW</div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD PAGE -->
+        <section class="page active" id="dashboardPage">
+
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <span class="welcome-tag">YOUR BUSINESS AT A GLANCE</span>
+                    <h2>Welcome back, John!</h2>
+                    <p>Manage your clients and quotations from one place.</p>
+                    <button class="banner-button" data-go="clients">
+                        Manage Clients →
+                    </button>
+                </div>
+
+                <div class="banner-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&fit=crop&q=75"
+                        alt="Business analytics displayed on a computer"
+                        loading="lazy">
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>Business Overview</h2>
+                    <p>Summary of your saved records.</p>
+                </div>
+                <span class="live-label">● LOCAL DATA</span>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Clients</span>
+                        <span class="stat-icon blue">♙</span>
+                    </div>
+                    <h3 id="totalClients">0</h3>
+                    <small>Registered client records</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Quotations</span>
+                        <span class="stat-icon teal">▤</span>
+                    </div>
+                    <h3 id="totalQuotations">0</h3>
+                    <small>Created quotations</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Pending</span>
+                        <span class="stat-icon orange">◷</span>
+                    </div>
+                    <h3 id="pendingQuotations">0</h3>
+                    <small>Awaiting a decision</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Accepted</span>
+                        <span class="stat-icon green">✓</span>
+                    </div>
+                    <h3 id="acceptedQuotations">0</h3>
+                    <small>Accepted quotations</small>
+                </article>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Clients</h3>
+                            <p>Your latest client records</p>
+                        </div>
+                        <button class="small-link" data-go="clients">
+                            View all
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CLIENT</th>
+                                    <th>EMAIL</th>
+                                    <th>DATE ADDED</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentClients">
+                                <tr>
+                                    <td colspan="3" class="empty-cell">
+                                        No clients added yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel quick-panel">
+                    <h3>Quick Actions</h3>
+                    <p>Choose what you want to do.</p>
+
+                    <button class="quick-action" data-go="clients">
+                        <span class="quick-icon">＋</span>
+                        <span>
+                            <strong>Add a Client</strong>
+                            <small>Register a new client</small>
+                        </span>
+                        <b>›</b>
+                    </button>
+
+                    <button class="quick-action" data-go="quotations">
+                        <span class="quick-icon">▤</span>
+                        <span>
+                            <strong>Create Quotation</strong>
+                            <small>Prepare a client quotation</small>
+                        </span>
+                        <b>›</b>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CLIENTS PAGE -->
+        <section class="page" id="clientsPage">
+
+            <div class="page-intro">
+                <div>
+                    <h2>Client Management</h2>
+                    <p>Register, search and manage your client records.</p>
+                </div>
+
+                <button class="primary-button" id="showClientForm">
+                    + Add New Client
+                </button>
+            </div>
+
+            <div class="form-panel hidden" id="clientFormPanel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Register New Client</h3>
+                        <p>Enter the client's information below.</p>
+                    </div>
+                    <button class="close-button" id="closeClientForm"
+                        aria-label="Close form">×</button>
+                </div>
+
+                <form id="clientForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="clientName">Full Name *</label>
+                            <input type="text" id="clientName"
+                                placeholder="Enter client name" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="clientEmail">Email Address *</label>
+                            <input type="email" id="clientEmail"
+                                placeholder="client@example.com" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="clientPhone">Phone Number</label>
+                            <input type="tel" id="clientPhone"
+                                placeholder="+254...">
+                        </div>
+
+                        <div class="field">
+                            <label for="clientBusiness">Business / Company</label>
+                            <input type="text" id="clientBusiness"
+                                placeholder="Company name">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="secondary-button"
+                            id="cancelClient">Cancel</button>
+                        <button type="submit" class="primary-button">
+                            Save Client
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading clients-heading">
+                    <div>
+                        <h3>All Clients</h3>
+                        <p id="clientCountLabel">0 client records</p>
+                    </div>
+
+                    <input type="search" id="clientSearch"
+                        class="search-input"
+                        placeholder="Search clients...">
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CLIENT</th>
+                                <th>EMAIL</th>
+                                <th>PHONE</th>
+                                <th>BUSINESS</th>
+                                <th>DATE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTable">
+                            <tr>
+                                <td colspan="6" class="empty-cell">
+                                    No clients registered yet.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- QUOTATIONS PAGE -->
+        <section class="page" id="quotationsPage">
+
+            <div class="page-intro">
+                <div>
+                    <h2>Quotation Management</h2>
+                    <p>Create and track quotations for your clients.</p>
+                </div>
+
+                <button class="primary-button" id="showQuotationForm">
+                    + Create Quotation
+                </button>
+            </div>
+
+            <div class="form-panel hidden" id="quotationFormPanel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>New Quotation</h3>
+                        <p>Complete the quotation details.</p>
+                    </div>
+                    <button class="close-button" id="closeQuotationForm"
+                        aria-label="Close form">×</button>
+                </div>
+
+                <form id="quotationForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="quotationClient">Select Client *</label>
+                            <select id="quotationClient" required>
+                                <option value="">Choose a client</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="quotationTitle">Project / Service *</label>
+                            <input type="text" id="quotationTitle"
+                                placeholder="Website design" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="quotationAmount">Amount (KSh) *</label>
+                            <input type="number" id="quotationAmount"
+                                min="1" step="0.01"
+                                placeholder="25000" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="quotationStatus">Status</label>
+                            <select id="quotationStatus">
+                                <option value="Pending">Pending</option>
+                                <option value="Accepted">Accepted</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="secondary-button"
+                            id="cancelQuotation">Cancel</button>
+                        <button type="submit" class="primary-button">
+                            Save Quotation
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading clients-heading">
+                    <div>
+                        <h3>All Quotations</h3>
+                        <p id="quotationCountLabel">0 quotations</p>
+                    </div>
+
+                    <input type="search" id="quotationSearch"
+                        class="search-input"
+                        placeholder="Search quotations...">
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CLIENT</th>
+                                <th>PROJECT / SERVICE</th>
+                                <th>AMOUNT</th>
+                                <th>DATE</th>
+                                <th>STATUS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotationsTable">
+                            <tr>
+                                <td colspan="6" class="empty-cell">
+                                    No quotations created yet.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <p>© <span id="currentYear"></span> ClientFlow Management Suite</p>
+            <p>Designed for efficient business management.</p>
+        </footer>
+
+    </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
